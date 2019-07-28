@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Go wasm</title>
+</head>
+
+<body>
+	<script src="wasm_exec.js"></script>
+	<script>
+		const go = new Go();
+		WebAssembly.instantiateStreaming(fetch("test.wasm"), go.importObject).then((result) => {
+			go.run(result.instance);
+		});
+	</script>
+	<script>
+		function getNum(){
+			console.log(test.getNum())
+		}
+	</script>
+	<button onClick="test.print();" id="runButton" >print</button><br>
+	<button onClick="test.twice()" id="runButton">twice</button><br>
+	<button onClick="test.add(1)" id="runButton">add</button><br>
+	<button onClick="getNum()" id="runButton">get test.Num</button><br>
+</body>
+</html>
