@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strconv"
 	"syscall/js"
 	"unsafe"
 )
@@ -35,7 +34,6 @@ func (t *Test) AddAnotherTestWrapper(this js.Value, args []js.Value) interface{}
 	t.AddAnotherTest(t2)
 	return nil
 }
-
 
 func registerCallbacks() {
 	var test = &Test{
