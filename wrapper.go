@@ -26,16 +26,16 @@ func (t *Test) GetNumWrapper(this js.Value, args []js.Value) interface{} {
 }
 
 func (t *Test) getPtr(this js.Value, args []js.Value) interface{} {
-	return js.ValueOf(uintptr(unsafe.Pointer(t)))
+	return js.ValueOf(unsafe.Pointer(t))
 }
 
 func (t *Test) AddAnotherTestWrapper(this js.Value, args []js.Value) interface{} {
 	ptrJSValue := args[0].Call("_ptr")
-	uintVal, _ := strconv.ParseUint(ptrJSValue.String(), 10, 64)
-	t2 := (*Test)(unsafe.Pointer(uintptr(uintVal)))
+	t2 := (*Test)(unsafe.Pointer(uintptr(ptrJSValue.Float())))
 	t.AddAnotherTest(t2)
 	return nil
 }
+
 
 func registerCallbacks() {
 	var test = &Test{
