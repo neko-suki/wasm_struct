@@ -1,4 +1,4 @@
-how to access Go's struct from wasm
+how to access Go's struct from WebAssembly
 
 # how to use
 ## build
