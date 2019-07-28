@@ -30,7 +30,7 @@ func (t *Test) getPtr(this js.Value, args []js.Value) interface{} {
 
 func (t *Test) AddAnotherTestWrapper(this js.Value, args []js.Value) interface{} {
 	ptrJSValue := args[0].Call("_ptr")
-	t2 := (*Test)(unsafe.Pointer(uintptr(ptrJSValue.Float())))
+	t2 := (*Test)(unsafe.Pointer(ptrJSValue.Float()))
 	t.AddAnotherTest(t2)
 	return nil
 }
